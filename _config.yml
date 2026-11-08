@@ -30,6 +30,9 @@ community_calendar:
   # 予定のタイトルを表示するか（false にすると「予約あり」とだけ表示）
   show_title: true
 
+# 集会所の予約フォーム（Google フォーム、kojin.oguradai@gmail.com で作成）
+booking_form_url: https://docs.google.com/forms/d/e/1FAIpQLSc8NUI5mLJYTZxoz9EAYgp3VAx1AR0PrcCmIC7ygqYjJMwNlw/viewform
+
 # お知らせ記事のURLの形（例: /news/2026/05/20/soukai/）
 permalink: /news/:year/:month/:day/:title/
 

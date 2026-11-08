@@ -1130,6 +1130,12 @@ body {
     flex-wrap: wrap;
 }
 
+.download-guide-box .booking-note {
+    margin: 20px 0 0;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+}
+
 /* 12. 自治会規則セクション
    ========================================================================== */
 .rule-card {
