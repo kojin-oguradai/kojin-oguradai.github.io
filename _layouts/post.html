@@ -1,0 +1,34 @@
+---
+layout: default
+---
+{%- assign t = site.data.news_types[page.type] | default: site.data.news_types["お知らせ"] -%}
+<main>
+    <section class="section post-section">
+        <div class="container post-container">
+            <nav class="breadcrumb" aria-label="現在位置">
+                <a href="{{ '/' | relative_url }}">ホーム</a> ＞
+                <a href="{{ '/news/' | relative_url }}">お知らせ一覧</a> ＞
+                <span>{{ page.title }}</span>
+            </nav>
+
+            <article class="post-article">
+                <header class="post-header">
+                    <div class="news-meta">
+                        <span class="news-date">{{ page.date | date: "%Y年%-m月%-d日" }}</span>
+                        <span class="news-tag {{ t.class }}">{{ t.label }}</span>
+                    </div>
+                    <h2 class="post-title">{{ page.title }}</h2>
+                </header>
+
+                <div class="post-body">
+                    {{ content }}
+                </div>
+            </article>
+
+            <div class="post-footer-nav">
+                <a href="{{ '/news/' | relative_url }}" class="btn btn-secondary btn-large"><i data-lucide="list"></i> お知らせ一覧へ戻る</a>
+                <a href="{{ '/' | relative_url }}" class="btn btn-primary btn-large"><i data-lucide="home"></i> ホームへ</a>
+            </div>
+        </div>
+    </section>
+</main>

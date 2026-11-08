@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 120 }}{% else %}{{ site.description }}{% endif %}">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <!-- Google Fonts: Noto Sans JP for clear, modern Japanese typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons for clean, recognizable icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+</head>
+<body class="font-size-medium">
+
+    <!-- Top Accessibility Bar (Elderly Friendly Font Size Controller) -->
+    <div class="accessibility-bar" aria-label="アクセシビリティ設定">
+        <div class="container accessibility-container">
+            <span class="accessibility-label"><i data-lucide="eye"></i> 文字の大きさ：</span>
+            <div class="font-size-buttons">
+                <button type="button" id="btn-size-standard" class="btn-size active" aria-label="文字サイズを標準にする">標準</button>
+                <button type="button" id="btn-size-large" class="btn-size" aria-label="文字サイズを大きくする">大</button>
+                <button type="button" id="btn-size-xlarge" class="btn-size" aria-label="文字サイズをさらに大きくする">特大</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="logo-area">
+                <a href="{{ '/' | relative_url }}" class="logo-link">
+                    <span class="logo-icon"><i data-lucide="home"></i></span>
+                    <div class="logo-text">
+                        <h1>興人小倉台自治会</h1>
+                        <span class="logo-sub">公式ホームページ</span>
+                    </div>
+                </a>
+            </div>
+            <button class="mobile-menu-toggle" id="menu-toggle" aria-label="メニューを開閉する" aria-expanded="false">
+                <i data-lucide="menu" id="menu-icon-open"></i>
+                <i data-lucide="x" id="menu-icon-close" class="hidden"></i>
+                <span class="menu-toggle-text">メニュー</span>
+            </button>
+            <nav class="main-nav" id="main-nav" aria-label="メインナビゲーション">
+                <ul>
+                    <li><a href="{{ '/' | relative_url }}"><i data-lucide="home"></i> ホーム</a></li>
+                    <li><a href="{{ '/' | relative_url }}#news"><i data-lucide="megaphone"></i> お知らせ</a></li>
+                    <li><a href="{{ '/' | relative_url }}#calendar"><i data-lucide="calendar"></i> 集会所利用予定</a></li>
+                    <li><a href="{{ '/' | relative_url }}#rules"><i data-lucide="file-text"></i> 自治会規則</a></li>
+                    <li><a href="{{ '/' | relative_url }}#contact"><i data-lucide="message-square"></i> お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    {{ content }}
+
+
+    <!-- Footer Section -->
+    <footer class="main-footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <h2>興人小倉台自治会</h2>
+                <p>大阪府枚方市小倉東町地区</p>
+            </div>
+            <div class="footer-contacts">
+                <h4><i data-lucide="mail"></i> お問い合わせメールアドレス</h4>
+                <p style="margin-bottom: 8px;"><a href="mailto:kojin.oguradai@gmail.com" style="color: var(--color-white); font-weight: 700; text-decoration: underline;">kojin.oguradai@gmail.com</a></p>
+                <p class="footer-note" style="font-size: 0.9rem; opacity: 0.8; line-height: 1.5;">自治会活動に関するご質問は、上記メールアドレス、またはお問い合わせフォームよりお知らせください。</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 興人小倉台自治会. All Rights Reserved. (Created with care for Kojin Oguradai community)</p>
+        </div>
+    </footer>
+
+    <!-- Main Javascript File -->
+    <script src="{{ '/script.js' | relative_url }}"></script>
+</body>
+</html>

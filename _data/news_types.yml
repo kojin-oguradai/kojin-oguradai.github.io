@@ -1,0 +1,29 @@
+# お知らせの「種類」の一覧
+# 記事ファイルの先頭にある「type:」には、下の見出し（重要・お知らせ・回覧板・行事）のどれかを書きます。
+#   filter: 絞り込みボタン用の名前（英字。変更しないでください）
+#   label : カードに表示されるラベル
+#   class : ラベルの色（style.css で定義）
+
+重要:
+  filter: notice
+  label: 重要
+  button: 重要なお知らせ
+  class: tag-notice
+
+お知らせ:
+  filter: info
+  label: お知らせ
+  button: お知らせ
+  class: tag-info
+
+回覧板:
+  filter: circular
+  label: 回覧
+  button: 回覧板
+  class: tag-circular
+
+行事:
+  filter: event
+  label: イベント
+  button: イベント・行事
+  class: tag-event

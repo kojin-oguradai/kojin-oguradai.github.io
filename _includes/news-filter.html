@@ -1,0 +1,6 @@
+<div class="filter-container">
+    <button type="button" class="btn-filter active" data-filter="all">すべて</button>
+    {%- for t in site.data.news_types %}
+    <button type="button" class="btn-filter" data-filter="{{ t[1].filter }}">{{ t[1].button }}</button>
+    {%- endfor %}
+</div>

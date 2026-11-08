@@ -1,0 +1,358 @@
+---
+layout: default
+---
+
+    <main>
+        <!-- Hero Visual Section -->
+        <section class="hero-section" aria-label="ようこそ">
+            <div class="hero-bg-overlay"></div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <span class="hero-badge"><i data-lucide="shield-check"></i> 安全・安心・笑顔の街</span>
+                    <h2>ようこそ、<br>興人小倉台自治会へ</h2>
+                    <p class="hero-lead">興人小倉台自治会は、住民の皆様が日々安全に、そして安心して暮らせる地域づくりを目指して活動しています。このホームページでは、回覧板のお知らせや集会所の予約状況などの情報を分かりやすく発信していきます。</p>
+                    <div class="hero-actions">
+                        <a href="#news" class="btn btn-primary btn-large"><i data-lucide="arrow-down-circle"></i> 最新情報を見る</a>
+                        <a href="#calendar" class="btn btn-secondary btn-large"><i data-lucide="calendar"></i> 集会所を予約する</a>
+                    </div>
+                </div>
+                <div class="hero-image-container">
+                    <img src="{{ '/assets/images/hero.png' | relative_url }}" alt="緑豊かで温かみのある日本の住宅街のイメージイラスト" class="hero-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Contacts & Info Section -->
+        <section class="quick-info-section" aria-label="重要なお知らせ">
+            <div class="container">
+                <div class="grid grid-3">
+                    <div class="info-card info-card-emergency">
+                        <div class="card-header">
+                            <i data-lucide="phone-call" class="card-icon"></i>
+                            <h3>緊急時の連絡先</h3>
+                        </div>
+                        <p>災害時の緊急連絡や避難に関する情報はこちら。</p>
+                        <div class="emergency-numbers">
+                            <div class="num-item"><span>枚方東消防署：</span><strong>119</strong></div>
+                            <div class="num-item"><span>枚方警察署：</span><strong>110</strong></div>
+                        </div>
+                    </div>
+                    <div class="info-card info-card-trash">
+                        <div class="card-header">
+                            <i data-lucide="trash-2" class="card-icon"></i>
+                            <h3>ごみ収集カレンダー</h3>
+                        </div>
+                        <p>小倉台地区の主なごみ収集曜日です。</p>
+                        <ul class="trash-days">
+                            <li><span>燃やせるごみ：</span><strong>火曜・金曜</strong></li>
+                            <li><span>資源ごみ：</span><strong>第2・第4水曜</strong></li>
+                            <li><span>燃やせないごみ：</span><strong>第1水曜</strong></li>
+                        </ul>
+                    </div>
+                    <div class="info-card info-card-office">
+                        <div class="card-header">
+                            <i data-lucide="map-pin" class="card-icon"></i>
+                            <h3>自治会集会所</h3>
+                        </div>
+                        <p><strong>住所:</strong> 大阪府枚方市小倉東町（興人小倉台）</p>
+                        <p><strong>利用時間:</strong> 午前9時 〜 午後9時</p>
+                        <a href="#calendar" class="card-link">空き状況の確認 <i data-lucide="chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News & Circulars Section -->
+        <section id="news" class="news-section section">
+            <div class="container">
+                <div class="section-title-area">
+                    <h2 class="section-title"><i data-lucide="megaphone"></i> お知らせ・回覧板</h2>
+                    <p class="section-subtitle">自治会からのお知らせや、回覧板で配布された資料を掲載しています。</p>
+                </div>
+
+                {% include news-filter.html %}
+
+                <!-- News Grid -->
+                <div class="grid grid-3" id="news-grid">
+                    {% for post in site.posts limit: 6 %}
+                    {% include news-card.html post=post %}
+                    {% else %}
+                    <p>現在お知らせはありません。</p>
+                    {% endfor %}
+                </div>
+                <div class="news-more">
+                    <a href="{{ '/news/' | relative_url }}" class="btn btn-secondary btn-large"><i data-lucide="list"></i> すべてのお知らせを見る</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Center Calendar Section -->
+        <section id="calendar" class="calendar-section section bg-light">
+            <div class="container">
+                <div class="section-title-area">
+                    <h2 class="section-title"><i data-lucide="calendar"></i> 集会所利用予定</h2>
+                    <p class="section-subtitle">自治会集会所の予約状況です。地域のサークル活動や会合などにご利用いただけます。</p>
+                </div>
+
+                <!-- Calendar Tab Nav -->
+                <div class="calendar-tabs" role="tablist">
+                    <button class="calendar-tab-btn active" id="tab-demo" role="tab" aria-selected="true" aria-controls="panel-demo"><i data-lucide="calendar-days"></i> 直近の予約状況（一覧）</button>
+                    <button class="calendar-tab-btn" id="tab-google" role="tab" aria-selected="false" aria-controls="panel-google"><i data-lucide="globe"></i> Googleカレンダー表示</button>
+                    <button class="calendar-tab-btn" id="tab-guide" role="tab" aria-selected="false" aria-controls="panel-guide"><i data-lucide="help-circle"></i> ご利用・ご予約方法</button>
+                </div>
+
+                <!-- Calendar Panels -->
+                <div class="calendar-panels">
+                    <!-- Panel 1: Live Demo Schedule (Elderly Friendly List View) -->
+                    <div class="calendar-panel active" id="panel-demo" role="tabpanel" aria-labelledby="tab-demo">
+                        <div class="panel-intro-bar">
+                            <h3><i data-lucide="calendar-days"></i> 2026年5月・6月の予約一覧</h3>
+                            <p>高齢の方でも見やすいように、予約状況をカレンダーの表ではなくリスト形式でも確認できるようにしています。</p>
+                        </div>
+                        <div class="schedule-list">
+                            <!-- JS will render this, static list below as fallback -->
+                            <div class="schedule-item">
+                                <div class="schedule-date-badge">
+                                    <span class="month">5月</span>
+                                    <span class="day">25日</span>
+                                    <span class="day-of-week mon">(月)</span>
+                                </div>
+                                <div class="schedule-details">
+                                    <span class="time"><i data-lucide="clock"></i> 10:00 〜 12:00</span>
+                                    <h4 class="event-title">シニア体操サークル</h4>
+                                    <span class="status status-booked">予約済</span>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-date-badge">
+                                    <span class="month">5月</span>
+                                    <span class="day">28日</span>
+                                    <span class="day-of-week thu">(木)</span>
+                                </div>
+                                <div class="schedule-details">
+                                    <span class="time"><i data-lucide="clock"></i> 13:00 〜 17:00</span>
+                                    <h4 class="event-title">自治会役員 定例会議</h4>
+                                    <span class="status status-booked">予約済</span>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-date-badge">
+                                    <span class="month">5月</span>
+                                    <span class="day">30日</span>
+                                    <span class="day-of-week sat">(土)</span>
+                                </div>
+                                <div class="schedule-details">
+                                    <span class="time"><i data-lucide="clock"></i> 09:00 〜 12:00</span>
+                                    <h4 class="event-title">小倉台囲碁・将棋クラブ</h4>
+                                    <span class="status status-booked">予約済</span>
+                                </div>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-date-badge">
+                                    <span class="month">6月</span>
+                                    <span class="day">02日</span>
+                                    <span class="day-of-week tue">(火)</span>
+                                </div>
+                                <div class="schedule-details">
+                                    <span class="time"><i data-lucide="clock"></i> 14:00 〜 16:00</span>
+                                    <h4 class="event-title">お茶飲みサロン（談話会）</h4>
+                                    <span class="status status-booked">予約済</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="schedule-footer">
+                            <p><i data-lucide="info"></i> 上記以外の時間帯は空いています。予約のお申し込みは「ご利用・ご予約方法」タブをご覧ください。</p>
+                        </div>
+                    </div>
+
+                    <!-- Panel 2: Google Calendar Integration -->
+                    <div class="calendar-panel hidden" id="panel-google" role="tabpanel" aria-labelledby="tab-google">
+                        <div class="google-calendar-container">
+                            <!-- Responsive Iframe for Google Calendar -->
+                            <div class="calendar-iframe-wrapper">
+                                <iframe src="https://calendar.google.com/calendar/embed?src=kojin.oguradai%40gmail.com&ctz=Asia%2FTokyo" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no" class="google-calendar-iframe" title="集会所利用予定カレンダー"></iframe>
+                            </div>
+                            <div class="calendar-setup-instruction">
+                                <div class="instruction-box">
+                                    <h4><i data-lucide="settings"></i> Google カレンダーの表示について</h4>
+                                    <p>自治会のGoogleアカウント（<strong>kojin.oguradai@gmail.com</strong>）の集会所カレンダーを表示しています。</p>
+                                    <p class="warning-text" style="color: #d32f2f; font-weight: 700; margin-top: 10px; display: flex; align-items: center; gap: 8px;"><i data-lucide="alert-triangle"></i> カレンダーが表示されない、または「権限がありません」と表示される場合は、Googleカレンダーの設定で「一般公開」が有効になっていることをご確認ください。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 3: Booking Instructions -->
+                    <div class="calendar-panel hidden" id="panel-guide" role="tabpanel" aria-labelledby="tab-guide">
+                        <div class="guide-content">
+                            <h3><i data-lucide="info"></i> 集会所のご利用の流れ</h3>
+                            <div class="steps-grid">
+                                <div class="step-card">
+                                    <div class="step-num">1</div>
+                                    <h4>空き状況を確認する</h4>
+                                    <p>「直近の予約状況」または「Googleカレンダー」で、利用したい日時が空いているか確認します。</p>
+                                </div>
+                                <div class="step-card">
+                                    <div class="step-num">2</div>
+                                    <h4>利用申請を提出する</h4>
+                                    <p>集会所利用申請書に必要事項を記入し、利用予定日の1週間前までに自治会長または集会所管理人へご提出ください。</p>
+                                </div>
+                                <div class="step-card">
+                                    <div class="step-num">3</div>
+                                    <h4>鍵の貸し出し・利用</h4>
+                                    <p>当日は管理担当から鍵を受け取り、ご利用ください。使用後は清掃および戸締り（火の元・消灯確認）を徹底してください。</p>
+                                </div>
+                            </div>
+                            <div class="download-guide-box">
+                                <h4>集会所に関する規約と申請書</h4>
+                                <p>利用規約や申請書類はこちらからダウンロードできます。</p>
+                                <div class="btn-group">
+                                    <a href="#rules" class="btn btn-secondary"><i data-lucide="file-down"></i> 利用規約を見る</a>
+                                    <a href="https://docs.google.com/document/d/13D7cQp3K9p9Z-4ZJ4Z7F8-x5O8w1wY-demo/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i data-lucide="external-link"></i> 利用申請書（Google ドキュメント）</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Association Rules & Documents Section -->
+        <section id="rules" class="rules-section section">
+            <div class="container">
+                <div class="section-title-area">
+                    <h2 class="section-title"><i data-lucide="file-text"></i> 自治会規則・資料</h2>
+                    <p class="section-subtitle">興人小倉台自治会の会則および各種ガイドラインです。Google ドキュメントでいつでも閲覧・印刷可能です。</p>
+                </div>
+
+                <div class="grid grid-2">
+                    <div class="rule-card">
+                        <div class="rule-icon-wrapper">
+                            <i data-lucide="book-open" class="rule-main-icon"></i>
+                        </div>
+                        <div class="rule-details">
+                            <h3>興人小倉台自治会 会則</h3>
+                            <p>自治会の組織体制、役員の選出、会費の取り決めなど、自治会運営の根幹となる規則です。（最終改定：令和7年4月）</p>
+                            <a href="https://docs.google.com/document/d/1XwYy-demo1/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i data-lucide="external-link"></i> 会則をGoogleドキュメントで読む</a>
+                        </div>
+                    </div>
+
+                    <div class="rule-card">
+                        <div class="rule-icon-wrapper">
+                            <i data-lucide="file-check" class="rule-main-icon"></i>
+                        </div>
+                        <div class="rule-details">
+                            <h3>集会所 管理運営規則</h3>
+                            <p>自治会集会所を利用する際の使用料金、利用時間、清掃義務などに関する詳細な取り決めです。</p>
+                            <a href="https://docs.google.com/document/d/1XwYy-demo2/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i data-lucide="external-link"></i> 運営規則をGoogleドキュメントで読む</a>
+                        </div>
+                    </div>
+
+                    <div class="rule-card">
+                        <div class="rule-icon-wrapper">
+                            <i data-lucide="heart-pulse" class="rule-main-icon"></i>
+                        </div>
+                        <div class="rule-details">
+                            <h3>防災・災害時避難マニュアル</h3>
+                            <p>災害が発生したときの一次避難所（小倉台集会所）や避難経路、家庭内での備蓄リストについてまとめています。</p>
+                            <a href="https://docs.google.com/document/d/1XwYy-demo3/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i data-lucide="external-link"></i> マニュアルをGoogleドキュメントで読む</a>
+                        </div>
+                    </div>
+
+                    <div class="rule-card">
+                        <div class="rule-icon-wrapper">
+                            <i data-lucide="info" class="rule-main-icon"></i>
+                        </div>
+                        <div class="rule-details">
+                            <h3>転入される方へのご案内（ガイド）</h3>
+                            <p>当自治会地区に新しく引っ越してこられた方向けに、ごみの出し方、防犯灯の管理、役員回りなどの基本情報をまとめています。</p>
+                            <a href="https://docs.google.com/document/d/1XwYy-demo4/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i data-lucide="external-link"></i> ガイドをGoogleドキュメントで読む</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="google-docs-tip">
+                    <p><i data-lucide="lightbulb" class="tip-icon"></i> <strong>ヒント:</strong> Google ドキュメントのページが開いたら、右上のプリンターマークをクリックすることで、ご自宅のプリンターやコンビニのマルチコピー機で印刷することができます。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SNS & Contact Section -->
+        <section id="contact" class="sns-contact-section section bg-light">
+            <div class="container">
+                <div class="grid grid-2-1">
+                    <!-- Contact Form -->
+                    <div class="contact-area">
+                        <div class="section-title-area left-align">
+                            <h2 class="section-title"><i data-lucide="message-square"></i> 自治会へのお問い合わせ</h2>
+                            <p class="section-subtitle">ご意見、ご要望、集会所利用のご相談など、こちらからお気軽にお寄せください。</p>
+                            <p class="contact-email-direct" style="margin-top: 12px; font-weight: 500; font-size: 1.05rem; display: flex; align-items: center; gap: 8px; color: var(--color-primary-dark);"><i data-lucide="mail"></i> メール窓口：<a href="mailto:kojin.oguradai@gmail.com" style="color: var(--color-primary); text-decoration: underline; font-weight: 700;">kojin.oguradai@gmail.com</a></p>
+                        </div>
+
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group-row">
+                                <div class="form-group">
+                                    <label for="contact-name">お名前 <span class="required">必須</span></label>
+                                    <input type="text" id="contact-name" name="name" required placeholder="例：小倉 太郎">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-block">お住まいの組（地区） <span class="optional">任意</span></label>
+                                    <input type="text" id="contact-block" name="block" placeholder="例：3組">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">連絡先（メールアドレス） <span class="required">必須</span></label>
+                                <input type="email" id="contact-email" name="email" required placeholder="例：ogura@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-phone">連絡先（電話番号） <span class="optional">任意</span></label>
+                                <input type="tel" id="contact-phone" name="phone" placeholder="例：090-0000-0000">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message">お問い合わせ内容 <span class="required">必須</span></label>
+                                <textarea id="contact-message" name="message" rows="5" required placeholder="お問い合わせ内容をご記入ください"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-large btn-block"><i data-lucide="send"></i> 送信する</button>
+                            <div id="form-success-msg" class="form-alert success-alert hidden">
+                                <i data-lucide="check-circle"></i> お問い合わせを送信しました。ありがとうございました。（※デモ送信用のため、実際には送信されません）
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- SNS Links Sidebar -->
+                    <div class="sns-area">
+                        <div class="sns-box">
+                            <h3><i data-lucide="share-2"></i> 自治会公式SNS</h3>
+                            <p class="sns-intro">スマートフォンで手軽にお知らせを受け取ったり、地域の様子をご覧いただけます。ぜひフォローや友だち追加をお願いします！</p>
+                            
+                            <div class="sns-buttons">
+                                <!-- LINE Link -->
+                                <a href="https://line.me/R/ti/p/@line-demo-id" target="_blank" rel="noopener noreferrer" class="sns-btn sns-btn-line">
+                                    <span class="sns-icon-wrap"><i data-lucide="message-circle" class="line-icon-svg"></i></span>
+                                    <div class="sns-text">
+                                        <span class="sns-action">公式LINE</span>
+                                        <strong>友だち追加する</strong>
+                                    </div>
+                                    <i data-lucide="chevron-right" class="sns-arrow"></i>
+                                </a>
+
+                                <!-- Instagram Link -->
+                                <a href="https://www.instagram.com/instagram-demo-id/" target="_blank" rel="noopener noreferrer" class="sns-btn sns-btn-instagram">
+                                    <span class="sns-icon-wrap"><i data-lucide="instagram"></i></span>
+                                    <div class="sns-text">
+                                        <span class="sns-action">公式インスタグラム</span>
+                                        <strong>地域の日常を見る</strong>
+                                    </div>
+                                    <i data-lucide="chevron-right" class="sns-arrow"></i>
+                                </a>
+                            </div>
+
+                            <div class="sns-footer-note">
+                                <p><i data-lucide="shield-alert"></i> <strong>なりすましアカウントにご注意ください。</strong> 自治会からの発信は、このホームページと、上記の公式リンク先のみで行っております。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>

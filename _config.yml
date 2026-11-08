@@ -1,0 +1,25 @@
+# ==========================================================================
+# 興人小倉台自治会 ホームページ 設定ファイル
+# ※ このファイルを変更した場合、反映まで数分かかることがあります。
+# ==========================================================================
+
+title: 興人小倉台自治会
+description: 大阪府枚方市小倉東町 興人小倉台自治会の公式ホームページです。自治会からのお知らせ、回覧板、集会所の利用予約状況、自治会規則などを掲載しています。
+lang: ja
+timezone: Asia/Tokyo
+
+# サイトの公開先URL（GitHub Pages 公開後に設定）
+# 例: https://kojin-oguradai.github.io/ の場合は url に記入し、baseurl は空のまま
+url: ""
+baseurl: ""
+
+# お知らせ記事のURLの形（例: /news/2026/05/20/soukai/）
+permalink: /news/:year/:month/:day/:title/
+
+markdown: kramdown
+
+# サイトに含めないファイル
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

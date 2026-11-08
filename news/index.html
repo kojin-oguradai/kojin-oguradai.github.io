@@ -1,0 +1,24 @@
+---
+layout: default
+title: お知らせ一覧
+---
+<main>
+    <section id="news" class="news-section section">
+        <div class="container">
+            <div class="section-title-area">
+                <h2 class="section-title"><i data-lucide="megaphone"></i> お知らせ一覧</h2>
+                <p class="section-subtitle">これまでに掲載したお知らせ・回覧板をすべて表示しています（新しい順）。</p>
+            </div>
+
+            {% include news-filter.html %}
+
+            <div class="grid grid-3" id="news-grid">
+                {% for post in site.posts %}
+                {% include news-card.html post=post %}
+                {% else %}
+                <p>現在お知らせはありません。</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
