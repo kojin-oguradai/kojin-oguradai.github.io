@@ -13,6 +13,10 @@ timezone: Asia/Tokyo
 url: ""
 baseurl: ""
 
+# 作成中のお知らせを全ページ上部に表示する（true: 表示 / false: 非表示）
+# true の間は検索エンジンにも登録されません。正式公開時に false にしてください。
+under_construction: true
+
 # お知らせ記事のURLの形（例: /news/2026/05/20/soukai/）
 permalink: /news/:year/:month/:day/:title/
 

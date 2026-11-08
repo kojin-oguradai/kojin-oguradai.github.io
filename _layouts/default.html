@@ -13,8 +13,22 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Main Style Sheet -->
     <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+    {%- if site.under_construction %}
+    <!-- 作成中は検索エンジンに登録されないようにする -->
+    <meta name="robots" content="noindex, nofollow">
+    {%- endif %}
 </head>
 <body class="font-size-medium">
+
+    {%- if site.under_construction %}
+    <!-- 作成中のお知らせ（_config.yml の under_construction: false で非表示） -->
+    <div class="construction-banner" role="alert">
+        <div class="container construction-container">
+            <i data-lucide="construction"></i>
+            <p><strong>このホームページは現在作成中です。</strong>掲載しているお知らせ・日程・連絡先などは<strong>サンプル</strong>であり、実際の情報ではありません。</p>
+        </div>
+    </div>
+    {%- endif %}
 
     <!-- Top Accessibility Bar (Elderly Friendly Font Size Controller) -->
     <div class="accessibility-bar" aria-label="アクセシビリティ設定">

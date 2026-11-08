@@ -124,6 +124,33 @@ body {
     display: none !important;
 }
 
+/* 3-2. 作成中のお知らせ帯
+   ========================================================================== */
+.construction-banner {
+    background-color: #fff3cd;
+    border-bottom: 3px solid var(--color-accent);
+    color: #5d4037;
+    padding: 12px 0;
+}
+
+.construction-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.construction-container svg {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    color: var(--color-accent);
+}
+
+.construction-container p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
 /* 4. アクセシビリティ・トップバー
    ========================================================================== */
 .accessibility-bar {
