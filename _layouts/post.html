@@ -11,10 +11,18 @@ layout: default
                 <span>{{ page.title }}</span>
             </nav>
 
-            <article class="post-article">
+            <article class="post-article{% if page.sample %} is-sample{% endif %}">
+                {%- if page.sample %}
+                <div class="sample-notice" role="note">
+                    <i data-lucide="flask-conical"></i>
+                    <p><strong>この記事はサンプルです。</strong>ホームページの見え方を確認するための例文であり、実際の行事・日程・内容ではありません。</p>
+                </div>
+                {%- endif %}
+
                 <header class="post-header">
                     <div class="news-meta">
                         <span class="news-date">{{ page.date | date: "%Y年%-m月%-d日" }}</span>
+                        {%- if page.sample %}<span class="news-tag tag-sample">サンプル</span>{% endif %}
                         <span class="news-tag {{ t.class }}">{{ t.label }}</span>
                     </div>
                     <h2 class="post-title">{{ page.title }}</h2>

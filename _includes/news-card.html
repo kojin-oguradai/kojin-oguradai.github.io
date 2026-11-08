@@ -1,8 +1,11 @@
 {%- assign t = site.data.news_types[include.post.type] | default: site.data.news_types["お知らせ"] -%}
-<article class="news-card {{ t.filter }}">
+<article class="news-card {{ t.filter }}{% if include.post.sample %} is-sample{% endif %}">
     <div class="news-meta">
         <span class="news-date">{{ include.post.date | date: "%Y年%-m月%-d日" }}</span>
-        <span class="news-tag {{ t.class }}">{{ t.label }}</span>
+        <span class="news-tags">
+            {%- if include.post.sample %}<span class="news-tag tag-sample">サンプル</span>{% endif %}
+            <span class="news-tag {{ t.class }}">{{ t.label }}</span>
+        </span>
     </div>
     <h3 class="news-title">{{ include.post.title }}</h3>
     <p class="news-summary">{{ include.post.excerpt | strip_html | strip_newlines | truncate: 100 }}</p>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 120 }}{% else %}{{ site.description }}{% endif %}">
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <title>{% if page.sample %}【サンプル】{% endif %}{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
     <!-- Google Fonts: Noto Sans JP for clear, modern Japanese typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

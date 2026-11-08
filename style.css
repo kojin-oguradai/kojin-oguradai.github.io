@@ -1448,6 +1448,52 @@ body {
     color: var(--color-primary-dark);
 }
 
+/* サンプル記事の目印（記事の先頭に sample: true がある場合） */
+.news-tags {
+    display: inline-flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.tag-sample {
+    background-color: #616161;
+    color: var(--color-white);
+}
+
+.news-card.is-sample,
+.post-article.is-sample {
+    border-style: dashed;
+    background-image: repeating-linear-gradient(
+        -45deg,
+        transparent 0 18px,
+        rgba(0, 0, 0, 0.025) 18px 36px
+    );
+}
+
+.sample-notice {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #eeeeee;
+    border-left: 6px solid #616161;
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    margin-bottom: 24px;
+}
+
+.sample-notice svg {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    color: #616161;
+}
+
+.sample-notice p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
 .news-more {
     text-align: center;
     margin-top: 40px;
