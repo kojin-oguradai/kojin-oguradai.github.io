@@ -17,6 +17,18 @@ baseurl: ""
 # true の間は検索エンジンにも登録されません。正式公開時に false にしてください。
 under_construction: true
 
+# 集会所予約カレンダー（Google カレンダー）
+community_calendar:
+  # カレンダーID（Google カレンダーの「設定と共有」→「カレンダーの統合」に表示）
+  id: 47dd54669523405a305e9db0d4cb95e17b45dfe6c404334c2c80a99b8e7997f7@group.calendar.google.com
+  # Google Calendar API のAPIキー
+  # 空のままだと Google カレンダーの予定リスト表示、設定するとサイトのデザインで一覧表示する
+  api_key: ""
+  # 一覧に表示する期間（今日から何日先まで）
+  days: 60
+  # 予定のタイトルを表示するか（false にすると「予約あり」とだけ表示）
+  show_title: true
+
 # お知らせ記事のURLの形（例: /news/2026/05/20/soukai/）
 permalink: /news/:year/:month/:day/:title/
 

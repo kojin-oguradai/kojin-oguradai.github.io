@@ -103,80 +103,46 @@ layout: default
 
                 <!-- Calendar Panels -->
                 <div class="calendar-panels">
-                    <!-- Panel 1: Live Demo Schedule (Elderly Friendly List View) -->
+                    <!-- Panel 1: 予約状況リスト（Googleカレンダーから自動読み込み） -->
+                    {%- assign cal = site.community_calendar %}
+                    {%- capture cal_embed %}https://calendar.google.com/calendar/embed?src={{ cal.id | url_encode }}&ctz=Asia%2FTokyo&hl=ja{% endcapture %}
                     <div class="calendar-panel active" id="panel-demo" role="tabpanel" aria-labelledby="tab-demo">
                         <div class="panel-intro-bar">
-                            <h3><i data-lucide="calendar-days"></i> 2026年5月・6月の予約一覧</h3>
-                            <p>高齢の方でも見やすいように、予約状況をカレンダーの表ではなくリスト形式でも確認できるようにしています。</p>
+                            <h3><i data-lucide="calendar-days"></i> 今後{{ cal.days }}日間の予約状況</h3>
+                            <p>集会所の予約が入っている日時の一覧です（日付の早い順）。</p>
                         </div>
-                        <div class="schedule-list">
-                            <!-- JS will render this, static list below as fallback -->
-                            <div class="schedule-item">
-                                <div class="schedule-date-badge">
-                                    <span class="month">5月</span>
-                                    <span class="day">25日</span>
-                                    <span class="day-of-week mon">(月)</span>
-                                </div>
-                                <div class="schedule-details">
-                                    <span class="time"><i data-lucide="clock"></i> 10:00 〜 12:00</span>
-                                    <h4 class="event-title">シニア体操サークル</h4>
-                                    <span class="status status-booked">予約済</span>
-                                </div>
-                            </div>
-                            <div class="schedule-item">
-                                <div class="schedule-date-badge">
-                                    <span class="month">5月</span>
-                                    <span class="day">28日</span>
-                                    <span class="day-of-week thu">(木)</span>
-                                </div>
-                                <div class="schedule-details">
-                                    <span class="time"><i data-lucide="clock"></i> 13:00 〜 17:00</span>
-                                    <h4 class="event-title">自治会役員 定例会議</h4>
-                                    <span class="status status-booked">予約済</span>
-                                </div>
-                            </div>
-                            <div class="schedule-item">
-                                <div class="schedule-date-badge">
-                                    <span class="month">5月</span>
-                                    <span class="day">30日</span>
-                                    <span class="day-of-week sat">(土)</span>
-                                </div>
-                                <div class="schedule-details">
-                                    <span class="time"><i data-lucide="clock"></i> 09:00 〜 12:00</span>
-                                    <h4 class="event-title">小倉台囲碁・将棋クラブ</h4>
-                                    <span class="status status-booked">予約済</span>
-                                </div>
-                            </div>
-                            <div class="schedule-item">
-                                <div class="schedule-date-badge">
-                                    <span class="month">6月</span>
-                                    <span class="day">02日</span>
-                                    <span class="day-of-week tue">(火)</span>
-                                </div>
-                                <div class="schedule-details">
-                                    <span class="time"><i data-lucide="clock"></i> 14:00 〜 16:00</span>
-                                    <h4 class="event-title">お茶飲みサロン（談話会）</h4>
-                                    <span class="status status-booked">予約済</span>
-                                </div>
-                            </div>
+                        {%- if cal.api_key and cal.api_key != "" %}
+                        <div class="schedule-list" id="schedule-list"
+                             data-calendar-id="{{ cal.id }}"
+                             data-api-key="{{ cal.api_key }}"
+                             data-days="{{ cal.days }}"
+                             data-show-title="{{ cal.show_title }}"
+                             data-calendar-url="{{ cal_embed }}"
+                             aria-live="polite">
+                            <p class="schedule-message"><i data-lucide="loader"></i> 予約状況を読み込んでいます…</p>
                         </div>
+                        {%- else %}
+                        <!-- APIキー未設定の間は Google カレンダーの予定リスト表示を使う -->
+                        <div class="calendar-iframe-wrapper">
+                            <iframe src="{{ cal_embed }}&mode=AGENDA&showTitle=0&showPrint=0&showTabs=0&showCalendars=0" style="border: 0" width="100%" height="500" frameborder="0" scrolling="no" class="google-calendar-iframe" title="集会所の予約状況（一覧）"></iframe>
+                        </div>
+                        {%- endif %}
                         <div class="schedule-footer">
-                            <p><i data-lucide="info"></i> 上記以外の時間帯は空いています。予約のお申し込みは「ご利用・ご予約方法」タブをご覧ください。</p>
+                            <p><i data-lucide="info"></i> 一覧にない日時は空いています。予約のお申し込みは「ご利用・ご予約方法」タブをご覧ください。</p>
                         </div>
                     </div>
 
-                    <!-- Panel 2: Google Calendar Integration -->
+                    <!-- Panel 2: Googleカレンダー（月表示） -->
                     <div class="calendar-panel hidden" id="panel-google" role="tabpanel" aria-labelledby="tab-google">
                         <div class="google-calendar-container">
-                            <!-- Responsive Iframe for Google Calendar -->
                             <div class="calendar-iframe-wrapper">
-                                <iframe src="https://calendar.google.com/calendar/embed?src=kojin.oguradai%40gmail.com&ctz=Asia%2FTokyo" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no" class="google-calendar-iframe" title="集会所利用予定カレンダー"></iframe>
+                                <iframe src="{{ cal_embed }}&mode=MONTH" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no" class="google-calendar-iframe" title="集会所利用予定カレンダー"></iframe>
                             </div>
                             <div class="calendar-setup-instruction">
                                 <div class="instruction-box">
-                                    <h4><i data-lucide="settings"></i> Google カレンダーの表示について</h4>
-                                    <p>自治会のGoogleアカウント（<strong>kojin.oguradai@gmail.com</strong>）の集会所カレンダーを表示しています。</p>
-                                    <p class="warning-text" style="color: #d32f2f; font-weight: 700; margin-top: 10px; display: flex; align-items: center; gap: 8px;"><i data-lucide="alert-triangle"></i> カレンダーが表示されない、または「権限がありません」と表示される場合は、Googleカレンダーの設定で「一般公開」が有効になっていることをご確認ください。</p>
+                                    <h4><i data-lucide="calendar"></i> カレンダーの見方</h4>
+                                    <p>自治会の「集会所予約」カレンダーを月ごとに表示しています。左上の「＜」「＞」で前後の月に移動できます。</p>
+                                    <p><a href="{{ cal_embed }}" target="_blank" rel="noopener noreferrer">Google カレンダーで大きく表示する <i data-lucide="external-link"></i></a></p>
                                 </div>
                             </div>
                         </div>

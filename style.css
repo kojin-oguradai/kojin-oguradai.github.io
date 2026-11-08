@@ -935,6 +935,40 @@ body {
     border: 1px solid #d7ccc8;
 }
 
+.schedule-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 32px 20px;
+    text-align: center;
+    color: var(--color-text-light);
+}
+
+.schedule-message svg {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.schedule-message .lucide-loader {
+    animation: schedule-spin 1.2s linear infinite;
+}
+
+@keyframes schedule-spin {
+    to { transform: rotate(360deg); }
+}
+
+.schedule-error {
+    color: #c62828;
+}
+
+.schedule-error a {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: underline;
+}
+
 .schedule-footer {
     margin-top: 20px;
     font-size: 0.95rem;
